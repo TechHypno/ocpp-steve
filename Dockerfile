@@ -17,11 +17,10 @@ COPY . /code
 WORKDIR /code
 RUN ls -la /code
 RUN chmod +x ./config-setup.sh
-RUN ./config-setup.sh
 
 # Wait for the db to startup(via dockerize), then 
 # Build and run steve, requires a db to be available on port 3306
-CMD dockerize -wait tcp://mariadb:3306 -timeout 60s && \
+CMD bash ./config-setup.sh && dockerize -wait tcp://mariadb:3306 -timeout 60s && \
 	mvn clean package -Pdocker -Djdk.tls.client.protocols="TLSv1,TLSv1.1,TLSv1.2" && \
 	java -jar target/steve.jar
 
