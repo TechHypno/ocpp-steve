@@ -11,10 +11,10 @@ RUN curl -sfL https://github.com/powerman/dockerize/releases/download/"$DOCKERIZ
 
 EXPOSE 8180
 EXPOSE 8443
-WORKDIR /code
 
 # Copy the application's code
 COPY . /code
+WORKDIR /code
 RUN ls -la /code
 RUN chmod +x ./config-setup.sh
 RUN ./config-setup.sh
