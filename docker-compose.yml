@@ -27,8 +27,6 @@ services:
       SERVER_IP: ${OCPP_SERVER_IP:-192.168.1.2}
     links:
       - "db:mariadb"
-    # volumes:
-    #   - ${OCPP_DATAPATH:-./ocpp-steve}:/code
     ports:
       - "8180:8180"
       - "8443:8443"
