@@ -13,12 +13,12 @@ EXPOSE 8180
 EXPOSE 8443
 WORKDIR /code
 
-VOLUME ["/code"]
-
 # Copy the application's code
 COPY . /code
-RUN chmod +x config-setup.sh
-RUN config-setup.sh
+RUN ls -la /code
+RUN chmod +x ./config-setup.sh
+RUN ./config-setup.sh
+
 # Wait for the db to startup(via dockerize), then 
 # Build and run steve, requires a db to be available on port 3306
 CMD dockerize -wait tcp://mariadb:3306 -timeout 60s && \
