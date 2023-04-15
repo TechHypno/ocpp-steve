@@ -10,12 +10,10 @@ ENV DOCKERIZE_VERSION v0.19.0
 RUN curl -sfL https://github.com/powerman/dockerize/releases/download/"$DOCKERIZE_VERSION"/dockerize-`uname -s`-`uname -m` | install /dev/stdin /usr/local/bin/dockerize
 
 EXPOSE 8180
-EXPOSE 8443
 
 # Copy the application's code
 COPY . /code
 WORKDIR /code
-RUN ls -la /code
 RUN chmod +x ./config-setup.sh
 
 # Wait for the db to startup(via dockerize), then 

@@ -24,11 +24,10 @@ services:
       OCPP_ADMIN_PASSWORD: ${OCPP_ADMIN_PASSWORD:-1234}
       OCPP_WEBAPI_KEY: ${OCPP_WEBAPI_KEY:-STEVE-API-KEY}
       OCPP_WEBAPI_VALUE: ${OCPP_WEBAPI_VALUE:-asdf}
-      OCPP_SERVER_IP: ${OCPP_SERVER_IP:-192.168.1.2}
+      OCPP_SERVER_IP: ${OCPP_SERVER_IP:-0.0.0.0}
     links:
       - "db:mariadb"
     ports:
       - "8180:8180"
-      - "8443:8443"
     depends_on:
       - db
